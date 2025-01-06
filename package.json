@@ -1,0 +1,12 @@
+{
+  "name": "luis-karen",
+  "version": "1.0.0",
+  "main": "cdn.min.js",
+  "scripts": {
+    "start": "http-server -p 8000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
