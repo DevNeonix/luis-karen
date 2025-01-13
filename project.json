@@ -12,7 +12,10 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "docs",
-        "index": "./src/index.html",
+        "index": {
+          "input": "./src/index.prod.html",
+          "output": "./index.html"
+        },
         "main": "./src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "tsconfig.app.json",
