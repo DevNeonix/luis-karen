@@ -1,0 +1,13 @@
+.swiper{
+    width: 400px;
+
+}
+.swiper-slide{
+    width: 400px;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 10px;
+    img{
+        height: 100%;
+    }
+}
