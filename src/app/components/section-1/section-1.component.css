@@ -1,13 +1,13 @@
-.swiper{
-    width: 400px;
-
-}
-.swiper-slide{
-    width: 400px;
-    height: 600px;
-    overflow: hidden;
-    border-radius: 10px;
-    img{
-        height: 100%;
+.calendar{
+    th,td{
+        padding: 10px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+    }
+    .active{
+        background-color: rgba(232, 44, 96, 0.8);
+        display: flex;
+        color: #fff;
     }
 }

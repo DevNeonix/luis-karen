@@ -1,0 +1,12 @@
+.swiper {
+    width: 90vw;
+    height: 50vw;
+
+    overflow: hidden;
+    .swiper-slide {
+        overflow: hidden;
+        img {
+            height: 100%;
+        }
+    }
+}
