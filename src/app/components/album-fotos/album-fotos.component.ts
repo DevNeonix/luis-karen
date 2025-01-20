@@ -13,7 +13,7 @@ export class AlbumFotosComponent implements AfterViewInit{
       const swiper = new Swiper(".swiper", {
         loop: true,
         autoplay: {
-          delay: 3000,
+          delay: 5000,
           disableOnInteraction: false
         },
         pagination: {
@@ -21,7 +21,7 @@ export class AlbumFotosComponent implements AfterViewInit{
           dynamicBullets: false,
           clickable: true
         },
-        slidesPerView: 1.3,
+        slidesPerView: 'auto',
         spaceBetween: 10,
         navigation: {
           nextEl: ".swiper-button-next",
