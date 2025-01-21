@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import { PlatformService } from '../../platform.service';
 
 @Component({
   selector: 'app-countdown',
@@ -15,6 +16,8 @@ export class CountdownComponent implements OnInit, OnDestroy {
 
   private countdownSubscription: Subscription | null = null;
 
+  private platformService = inject(PlatformService);
+
   ngOnInit() {
     this.startCountdown();
   }
@@ -26,9 +29,13 @@ export class CountdownComponent implements OnInit, OnDestroy {
   }
 
   private startCountdown(): void {
-    this.countdownSubscription = interval(1000).subscribe(() => {
-      this.updateCountdown();
-    });
+    this.updateCountdown();
+
+    if (this.platformService.isBrowser()) {
+      this.countdownSubscription = interval(1000).subscribe(() => {
+        this.updateCountdown();
+      });
+    }
   }
 
   private updateCountdown(): void {

@@ -1,36 +1,48 @@
-import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ElementRef,
+  inject,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CountdownComponent } from '../countdown/countdown.component';
+import { PlatformService } from '../../platform.service';
+
 declare let lottie: any;
-declare let Swiper: any;
+
 @Component({
   selector: 'app-section-1',
-  imports: [CommonModule, CountdownComponent],
+  imports: [CommonModule],
   templateUrl: './section-1.component.html',
   styleUrl: './section-1.component.css',
 })
 export class Section1Component implements AfterViewInit {
   @ViewChild('heartAnimation') heartAnimation?: ElementRef;
-  public async ngAfterViewInit() {
-    if (await this.heartAnimation?.nativeElement) {
-      lottie.loadAnimation({
-        container: this.heartAnimation?.nativeElement,
-        renderer: 'svg',
-        loop: false,
-        autoplay: true,
-        path: 'animations/heart.json',
-      });
 
-      const swiper = new Swiper(".mySwiper", {});
+  private platformService = inject(PlatformService);
+
+  public async ngAfterViewInit() {
+    if (this.platformService.isBrowser()) {
+      if (await this.heartAnimation?.nativeElement) {
+        lottie.loadAnimation({
+          container: this.heartAnimation?.nativeElement,
+          renderer: 'svg',
+          loop: false,
+          autoplay: true,
+          path: 'animations/heart.json',
+        });
+      }
     }
   }
 
   createCalendar() {
-      const title = "Boda de Luis y Karen";
-      const description = "Únete a la celebración de la boda de Luis y Karen.";
-      const location = "Santa María Catedral - Chiclayo";
-      const startDate = "20250215T200000"; // 15 de febrero de 2025 a las 8 PM
-      const endDate = "20250215T230000"; // Finaliza a las 10 PM
+    if (this.platformService.isBrowser()) {
+      const title = 'Boda de Luis y Karen';
+      const description = 'Únete a la celebración de la boda de Luis y Karen.';
+      const location = 'Santa María Catedral - Chiclayo';
+      const startDate = '20250215T200000'; // 15 de febrero de 2025 a las 8 PM
+      const endDate = '20250215T230000'; // Finaliza a las 10 PM
 
       // Crear contenido del archivo .ics
       const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${title}\nDESCRIPTION:${description}\nLOCATION:${location}\nDTSTART:${startDate}\nDTEND:${endDate}\nEND:VEVENT\nEND:VCALENDAR`;
@@ -49,5 +61,6 @@ export class Section1Component implements AfterViewInit {
 
       // Liberar URL
       URL.revokeObjectURL(url);
+    }
   }
 }

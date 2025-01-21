@@ -5,7 +5,7 @@ declare let lottie: any;
   selector: 'app-section-3',
   imports: [CommonModule],
   templateUrl: './section-3.component.html',
-  styleUrl: './section-3.component.css',
+  styleUrl: './section-3.component.scss',
 })
 export class Section3Component {
 

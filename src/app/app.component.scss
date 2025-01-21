@@ -9,8 +9,11 @@
   top: 0;
   left: 0;
   z-index: -1;
-  background: url('/luis-karen/images/landscape.jpg') no-repeat center center/cover;
-  opacity: .3;
+  background-image: url('/images/landscape.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: .4;
   pointer-events: none;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px) grayscale(1);
 }
